@@ -16,7 +16,7 @@ Zig target presets for cross-compiling to reMarkable tablets.
 Add it to your `build.zig.zon` file:
 
 ```sh
-zig fetch git+https://github.com/0xdeb7ef/zig-remarkable
+zig fetch --save git+https://github.com/0xdeb7ef/zig-remarkable
 ```
 
 ## Usage
