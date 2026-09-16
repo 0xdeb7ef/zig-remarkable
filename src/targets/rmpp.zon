@@ -1,0 +1,16 @@
+.{
+    .triple = "aarch64-linux.6.12.49...6.12.49-gnu.2.39",
+    .cpu = .{
+        .arch = "aarch64",
+        .name = "cortex_a53",
+        .features = .{
+            "aes",
+            "crc",
+            "fp_armv8",
+            "neon",
+            "sha2",
+        },
+    },
+    .os = "linux",
+    .abi = "gnu",
+}
