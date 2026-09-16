@@ -30,7 +30,7 @@ const remarkable = @import("zig_remarkable");
 
 pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
-    const device = b.option(remarkable.Device, "device", "reMarkable device to target") orelse .rmpp;
+    const device = b.option(remarkable.Device, "device", "reMarkable device to target") orelse .ferrari;
 
     const target = remarkable.resolve(b, device);
 
