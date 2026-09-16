@@ -50,7 +50,7 @@ pub fn build(b: *std.Build) void {
 Build for a device (reMarkable Paper Pro as an example):
 
 ```sh
-zig build -Ddevice=rmpp -Doptimize=ReleaseFast
+zig build -Ddevice=ferrari -Doptimize=ReleaseFast
 ```
 
 ### Customizing a target
