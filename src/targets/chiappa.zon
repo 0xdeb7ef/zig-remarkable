@@ -1,0 +1,25 @@
+.{
+    .triple = "aarch64-linux.6.12.20...6.12.20-gnu.2.39",
+    .cpu = .{
+        .arch = "aarch64",
+        .name = "cortex_a55",
+        .features = .{
+            "aes",
+            "ccpp",
+            "crc",
+            "dotprod",
+            "fp_armv8",
+            "fullfp16",
+            "lse",
+            "neon",
+            "rcpc",
+            "rdm",
+            "sha2",
+            "ssbs",
+            // enabled by the toolchain as well. See: https://developer.remarkable.com/documentation/sdk
+            "crypto",
+        },
+    },
+    .os = "linux",
+    .abi = "gnu",
+}

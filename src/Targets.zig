@@ -1,10 +1,17 @@
 const std = @import("std");
 
+/// Supported reMarkable devices for target queries and resolution.
 pub const Device = enum {
+    /// reMarkable 1
     rm1,
+    /// reMarkable 2
     rm2,
-    rmpp,
-    rmppm,
+    /// reMarkable Paper Pro
+    ferrari,
+    /// reMarkable Paper Pro Move
+    chiappa,
+    /// reMarkable Paper Pure
+    tatsu,
 };
 
 /// Returns the target query for the specified reMarkable device, including its
@@ -13,8 +20,9 @@ pub fn query(device: Device) std.Target.Query {
     return switch (device) {
         .rm1 => comptime fromZon(@import("targets/rm1.zon")),
         .rm2 => comptime fromZon(@import("targets/rm2.zon")),
-        .rmpp => comptime fromZon(@import("targets/rmpp.zon")),
-        .rmppm => comptime fromZon(@import("targets/rmppm.zon")),
+        .ferrari => comptime fromZon(@import("targets/ferrari.zon")),
+        .chiappa => comptime fromZon(@import("targets/chiappa.zon")),
+        .tatsu => comptime fromZon(@import("targets/tatsu.zon")),
     };
 }
 
@@ -57,4 +65,10 @@ fn fromZon(comptime data: anytype) std.Target.Query {
         .os_tag = @field(std.Target.Os.Tag, data.os),
         .glibc_version = glibc_version,
     };
+}
+
+test "can resolve targets" {
+    inline for (std.enums.values(Device)) |device| {
+        _ = try std.zig.system.resolveTargetQuery(std.testing.io, query(device));
+    }
 }

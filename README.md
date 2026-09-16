@@ -4,12 +4,13 @@ Zig target presets for cross-compiling to reMarkable tablets.
 
 ## Supported devices
 
-| Device                    | Preset   |
-| ------------------------- | -------- |
-| reMarkable 1              | `.rm1`   |
-| reMarkable 2              | `.rm2`   |
-| reMarkable Paper Pro      | `.rmpp`  |
-| reMarkable Paper Pro Move | `.rmppm` |
+| Device                    | Preset     |
+| ------------------------- | ---------- |
+| reMarkable 1              | `.rm1`     |
+| reMarkable 2              | `.rm2`     |
+| reMarkable Paper Pro      | `.ferrari` |
+| reMarkable Paper Pro Move | `.chiappa` |
+| reMarkable Paper Pure     | `.tatsu`   |
 
 ## Installation
 

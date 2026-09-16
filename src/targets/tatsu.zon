@@ -1,5 +1,5 @@
 .{
-    .triple = "aarch64-linux.6.12.20...6.12.20-gnu.2.39",
+    .triple = "aarch64-linux.6.12.49...6.12.49-gnu.2.39",
     .cpu = .{
         .arch = "aarch64",
         .name = "cortex_a55",
@@ -16,6 +16,8 @@
             "rdm",
             "sha2",
             "ssbs",
+            // enabled by the toolchain as well. See: https://developer.remarkable.com/documentation/sdk
+            "crypto",
         },
     },
     .os = "linux",

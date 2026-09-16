@@ -9,6 +9,8 @@
             "fp_armv8",
             "neon",
             "sha2",
+            // enabled by the toolchain as well. See: https://developer.remarkable.com/documentation/sdk
+            "crypto",
         },
     },
     .os = "linux",
