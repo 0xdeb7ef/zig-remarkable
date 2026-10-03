@@ -34,11 +34,12 @@ pub fn resolve(b: *std.Build, device: Device) std.Build.ResolvedTarget {
 
 fn fromZon(comptime data: anytype) std.Target.Query {
     const arch = @field(std.Target.Cpu.Arch, data.cpu.arch);
-    const model = arch.parseCpuModel(data.cpu.name) catch
-        @compileError("Unknown CPU model: " ++ data.cpu.name);
+    const model = arch.parseCpuModel(data.cpu.name) orelse
+        @compileError("Invalid CPU model");
 
     const marker = "-" ++ data.abi ++ ".";
-    const abi_start = std.mem.lastIndexOf(u8, data.triple, marker).?;
+    const abi_start = std.mem.lastIndexOf(u8, data.triple, marker) orelse
+        @compileError("Invalid ABI information");
 
     const version_text = data.triple[abi_start + marker.len ..];
     const glibc_version = std.Target.Query.parseVersion(version_text) catch
@@ -48,7 +49,7 @@ fn fromZon(comptime data: anytype) std.Target.Query {
 
     var features: std.Target.Cpu.Feature.Set = .empty;
     inline for (data.cpu.features) |name| {
-        features.addFeature(@intFromEnum(@field(cpu_defs.Feature, name)));
+        features.addFeature(@backingInt(@field(cpu_defs.Feature, name)));
     }
 
     const model_features = model.toCpu(arch).features;
@@ -61,7 +62,7 @@ fn fromZon(comptime data: anytype) std.Target.Query {
         .cpu_arch = arch,
         .cpu_model = .{ .explicit = model },
         .cpu_features_add = features_add,
-        .cpu_features_sub = .empty,
+        // .cpu_features_sub = .empty,
         .os_tag = @field(std.Target.Os.Tag, data.os),
         .glibc_version = glibc_version,
     };

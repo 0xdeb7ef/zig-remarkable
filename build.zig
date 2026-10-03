@@ -16,7 +16,4 @@ pub fn build(b: *std.Build) void {
 
     b.step("test", "Run tests")
         .dependOn(&run_tests.step);
-
-    const check = b.step("check", "Check step for zls");
-    check.dependOn(&run_tests.step);
 }

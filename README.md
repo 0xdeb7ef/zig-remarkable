@@ -2,6 +2,8 @@
 
 Zig target presets for cross-compiling to reMarkable tablets.
 
+Requires Zig 0.17.0+.
+
 ## Supported devices
 
 | Device                    | Preset     |

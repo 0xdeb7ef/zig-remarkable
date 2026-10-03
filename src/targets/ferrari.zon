@@ -5,10 +5,18 @@
         .name = "cortex_a53",
         .features = .{
             "aes",
+            "balance_fp_ops",
             "crc",
+            "el2vmsa",
+            "el3",
             "fp_armv8",
+            "fuse_adrp_add",
+            "fuse_aes",
             "neon",
             "sha2",
+            "use_postra_scheduler",
+            "use_wzr_to_vec_move",
+            "v8a",
             // enabled by the toolchain as well. See: https://developer.remarkable.com/documentation/sdk
             "crypto",
         },
